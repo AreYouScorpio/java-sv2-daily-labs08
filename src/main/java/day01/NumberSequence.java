@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 public class NumberSequence {
-    public static List<Integer> numbers = new ArrayList<>();
+    private static List<Integer> numbers = new ArrayList<>();
 
 
     public NumberSequence(List<Integer> numbers) {
@@ -14,10 +14,9 @@ public class NumberSequence {
         System.out.println(this.numbers.toString());
     }
 
-    public NumberSequence(int piece, int min, int max) {
-
+    public NumberSequence(int count, int min, int max) {
                 Random rand = new Random();
-        for (int i=0; i<piece; i++) {
+        for (int i=0; i<count; i++) {
             int randomNumber = min + (int) (Math.random() * (max - min + 1));
             this.numbers.add(randomNumber);};
         System.out.println(this.numbers.toString());
@@ -47,8 +46,8 @@ public class NumberSequence {
     public static void main(String[] args) {
         NumberSequence numberSequence = new NumberSequence(5,1,8);
         System.out.println(numberSequence.closeToAverage(2).toString());
-        //NumberSequence numberSequence2 = new NumberSequence(numbers);
-        //System.out.println(numberSequence2.closeToAverage(2).toString());
+        NumberSequence numberSequence2 = new NumberSequence(numbers);
+        System.out.println(numberSequence2.closeToAverage(2).toString());
 
 
     }
