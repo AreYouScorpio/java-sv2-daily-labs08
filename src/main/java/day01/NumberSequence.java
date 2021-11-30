@@ -7,10 +7,6 @@ import java.util.Random;
 
 public class NumberSequence {
     public static List<Integer> numbers = new ArrayList<>();
-    int piece;
-    int min;
-    int max;
-
 
 
     public NumberSequence(List<Integer> numbers) {
@@ -26,8 +22,6 @@ public class NumberSequence {
             this.numbers.add(randomNumber);};
         System.out.println(this.numbers.toString());
                     }
-
-
 
 
     public List<Integer> closeToAverage(int value) {
