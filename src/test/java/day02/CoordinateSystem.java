@@ -26,6 +26,7 @@ public class CoordinateSystem {
 
         Point p = new Point(1, 2);
 
+
         CoordinateSystem coordinateSystem = new CoordinateSystem(new ArrayList<>(List.of(p)));
 
         coordinateSystem.getPoints().get(0).setX(2);
