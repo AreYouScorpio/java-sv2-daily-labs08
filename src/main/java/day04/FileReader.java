@@ -27,8 +27,8 @@ public class FileReader {
             int minSpread = 1000;
             String club = null;
             for (int i = 1; i < lines2.size() - 5; i++) {
-                if (i!=19) {
-                String team = lines2.get(i).substring(7, 21).trim();
+                if (i!=18) {
+                String team = lines2.get(i).substring(7, 22).trim();
                 int F = Integer.parseInt(lines2.get(i).substring(43, 45).trim());
                 int A = Integer.parseInt(lines2.get(i).substring(50, 52).trim());
                 int spread2 = Math.abs(F - A);
