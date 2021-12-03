@@ -18,6 +18,18 @@ public class Recipe {
         this.description = description;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public List<String> getIngredients() {
+        return ingredients;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
     public void addIngredient(String s, String... more){
         ingredients.add(s);
         ingredients.addAll(Arrays.asList(more));
