@@ -9,6 +9,8 @@ public class Point {
         this.y = y;
     }
 
+    //ezt adtuk hozzá a második verzióhoz:
+
     public Point(Point p) {
         this.x = p.x;
         this.y = p.y;
