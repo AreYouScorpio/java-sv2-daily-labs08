@@ -19,19 +19,17 @@ public class FileReader {
 
 
     private String findSmallestDifference(String filename){
-        List<String> lines;
+        List<String> lines2;
         try {
-            lines = Files.readAllLines(Paths.get("src/main/resources/" + filename));
+            lines2 = Files.readAllLines(Paths.get("src/main/resources/" + filename));
 
 
             int minSpread = 1000;
             String club = null;
-            for (int i = 1; i < lines.size() - 5; i++) {
-                String team = lines.get(i).substring(7, 21).trim();
-                int F = Integer.parseInt(lines.get(i).substring(43, 45).trim());
-                int A = Integer.parseInt(lines.get(i).substring(50, 52).trim());
-                //System.out.println(F);
-                //System.out.println(A);
+            for (int i = 1; i < lines2.size() - 5; i++) {
+                String team = lines2.get(i).substring(7, 21).trim();
+                int F = Integer.parseInt(lines2.get(i).substring(43, 45).trim());
+                int A = Integer.parseInt(lines2.get(i).substring(50, 52).trim());
                 int spread2 = Math.abs(F - A);
                 if (minSpread > spread2) {
                     minSpread = spread2;
