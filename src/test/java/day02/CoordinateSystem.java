@@ -12,8 +12,8 @@ public class CoordinateSystem {
     }
 
     public List<Point> getPoints() {
-        // return new ArrayList<>(points); - igy x 2 lesz
-        // igy meg 1 ha ezt írom:
+        // return new ArrayList<>(points); - igy x = 2 lesz lefutáskor
+        // igy meg x=1 ha ezt írom:
         List<Point> result = new ArrayList<>();
         for (Point p : points) {
             result.add(new Point(p));
