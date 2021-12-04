@@ -1,81 +1,71 @@
-package day04;
+package week8.day04;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
 public class FileReader {
 
-
-
-
     public static void main(String[] args) {
-        int min = new FileReader().findSmallestTemperatureSpread("weather.dat");
-        String chosenClub = new FileReader().findSmallestDifference("football.dat");
-        System.out.println(min);
-        System.out.println(chosenClub);
+        int minTemperature = new FileReader().findSmallestTemperatureSpread("weather.dat");
+        System.out.println(minTemperature);
+        String name = new FileReader().findSmallestTeamDifference("football.dat");
+        System.out.println(name);
     }
 
-
-    private String findSmallestDifference(String filename){
-        List<String> lines2;
+    private String findSmallestTeamDifference(String filename) {
         try {
-            lines2 = Files.readAllLines(Paths.get("src/main/resources/" + filename));
+            List<String> lines = Files.readAllLines(Paths.get("src/main/resources/datamunging/" + filename));
 
+            int minDifference = 1000;
+            String minName = null;
 
-            int minSpread = 1000;
-            String club = null;
-            for (int i = 1; i < lines2.size() - 5; i++) {
-                if (i!=18) {
-                String team = lines2.get(i).substring(7, 22).trim();
-                int F = Integer.parseInt(lines2.get(i).substring(43, 45).trim());
-                int A = Integer.parseInt(lines2.get(i).substring(50, 52).trim());
-                int spread2 = Math.abs(F - A);
-                if (minSpread > spread2) {
-                    minSpread = spread2;
-                    club = team;
+            for (int i = 1; i < lines.size(); i++) {
+                if (i != 18) {
+                    String name = lines.get(i).substring(7, 22).trim();
+                    int max = Integer.parseInt(lines.get(i).substring(43, 45).trim());
+                    int min = Integer.parseInt(lines.get(i).substring(50, 52).trim());
 
-                }}
+                    int spreed = Math.abs(max - min);
+                    if (minDifference > spreed) {
+                        minDifference = spreed;
+                        minName = name;
+                    }
+                }
             }
-            return club;
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new IllegalStateException("Can not read file", e);
+            return minName;
+        }
+        catch (IOException ioe) {
+            throw new IllegalStateException("Can not read file", ioe);
         }
     }
 
     private int findSmallestTemperatureSpread(String filename) {
-
-        List<String> lines;
         try {
-            lines = Files.readAllLines(Paths.get("src/main/resources/" + "weather.dat"));
+            List<String> lines = Files.readAllLines(Paths.get("src/main/resources/datamunging/" + filename));
 
-
-            int minSpread = 1000;
+            int minSpreed = 1000;
             int minDay = 0;
+
             for (int i = 2; i < lines.size() - 1; i++) {
                 int day = Integer.parseInt(lines.get(i).substring(2, 4).trim());
                 int max = Integer.parseInt(lines.get(i).substring(6, 8).trim());
                 int min = Integer.parseInt(lines.get(i).substring(12, 14).trim());
 
-                int spread = max - min;
-                if (minSpread > spread) {
-                    minSpread = spread;
+                int spreed = max - min;
+                if (minSpreed > spreed) {
+                    minSpreed = spreed;
                     minDay = day;
                 }
             }
-                return minDay;
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new IllegalStateException("Can not read file", e);
+            return minDay;
+        }
+        catch (IOException ioe) {
+            throw new IllegalStateException("Can not read file", ioe);
         }
     }
 
 
-
-    }
-
-
+}
